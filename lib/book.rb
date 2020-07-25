@@ -12,4 +12,12 @@ class Book < Product
   def to_s
     "Книга #{@title}, #{@genre}, автор - #{@author}, #{super}"
   end
+
+  def update(params)
+    super
+
+    @title = params[:title] if params[:title]
+    @genre = params[:genre] if params[:genre]
+    @author = params[:author] if params[:author]
+  end
 end
