@@ -1,16 +1,12 @@
 require_relative 'lib/product'
 require_relative 'lib/book'
 require_relative 'lib/movie'
+require_relative 'lib/product_collection'
 
-current_path = File.dirname(__FILE__ )
-movie = Movie.form_file(current_path + "/data/movie/01.txt")
-book = Book.form_file(current_path + "/data/book/01.txt")
+collection = ProductCollection.from_dir(File.dirname(__FILE__) + '/data')
 
-puts movie
-puts book
+collection.sort!(by: :price, order: :asc)
 
-begin
-  Product.form_file(current_path + "/data/movie/01.txt")
-rescue NotImplementedError
-  puts "Метод класса Product.form_file не реализован"
+collection.to_a.each do |product|
+  puts product
 end
