@@ -26,15 +26,15 @@ until user_input&.zero? || items.empty?
   if (1..items.size).include?(user_input)
     cart.add_item(item)
     item.amount -= 1
-    puts "Товары в вашей корзине: #{cart.buy_amount}"
-    puts cart.current_cart
+    puts "Товары в вашей корзине: #{cart.size}"
+    puts cart
     puts
-    puts "Сумма заказа: #{cart.show_amount} руб."
+    puts "Сумма заказа: #{cart.total} руб."
     puts
   end
 end
 
-puts "Количество купленных товаров: #{cart.buy_amount}"
-puts cart.current_cart
+puts "Количество купленных товаров: #{cart.size}"
+puts cart
 puts
-puts "С вас - #{cart.show_amount} руб.\nСпасибо за покупки!"
+puts "С вас - #{cart.total} руб.\nСпасибо за покупки!"

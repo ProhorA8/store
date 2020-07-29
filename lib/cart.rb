@@ -9,17 +9,17 @@ class Cart
     @products << product
   end
 
-  def show_amount
-    @products.sum { |product| product.price }
+  def total
+    @products.sum(&:price)
   end
 
-  def buy_amount
+  def size
     @products.size
   end
 
-  def current_cart
+  def to_s
     products.tally.map.with_index(1) do |(product, quantity), id|
       "#{id}. #{product.class}. #{product.title}. #{product.price} руб. x #{quantity} = #{product.price * quantity} руб."
-    end
+    end.join("\n")
   end
 end
